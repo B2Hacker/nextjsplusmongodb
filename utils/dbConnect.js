@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import {seedNote} from '../NoteSeed';
 
 const connection = {};
 
@@ -11,6 +12,8 @@ async function dbConnect() {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     });
+
+    seedNote();
 
     connection.isConnected = db.connections[0].readyState;
     console.log(connection.isConnected);
