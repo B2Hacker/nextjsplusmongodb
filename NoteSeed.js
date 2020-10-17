@@ -1,9 +1,14 @@
 import faker from 'faker'
 import Note from './models/Note' 
 
+
+// create array of notes then seed database
+
 export const seedNote = async () => {
     try {
+        //How many notes I want
         const quantity = 10;
+        //Empty array of data to store new data
         let notes = [];
 
         for (let i = 0; i < quantity; i++) {
@@ -14,8 +19,10 @@ export const seedNote = async () => {
                 })
             )
         }
+        //removes notes from databse, before we add more
         await Note.remove()
-		
+        
+        //creates new database entries for each note in the array
 		notes.forEach(note => {
 			Note.create(note)
 		})
